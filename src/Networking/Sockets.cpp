@@ -15,6 +15,12 @@ namespace Networking
 
     }
 
+    ConnectionDetails::ConnectionDetails(const IPv4Address& local_address, const Port& local_port, const IPv4Address& remote_address, const Port& remote_port)
+    : local_address_{local_address}, local_port_{local_port}, remote_address_{remote_address}, remote_port_{remote_port} 
+    {
+
+    }
+
     auto ConnectionDetails::to_string() const -> std::string
     {
         std::string remote_address_string;
@@ -40,6 +46,16 @@ namespace Networking
                left.local_port_ == right.local_port_ &&
                left.remote_address_ == right.remote_address_ &&
                left.remote_port_ == right.remote_port_;
+    }
+
+    auto ConnectionDetails::reverse_details(const ConnectionDetails& details) -> ConnectionDetails
+    {
+        if (!details.remote_address_.has_value() || !details.remote_port_.has_value())
+        {
+            return details;
+        }
+
+        return ConnectionDetails{details.remote_address_.value(), details.remote_port_.value(), details.local_address_, details.local_port_};
     }
 
     auto ConnectionDetails::Hash::operator()(const ConnectionDetails& details) const -> std::size_t

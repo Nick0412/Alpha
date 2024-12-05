@@ -18,9 +18,12 @@ namespace Networking
         std::optional<Port> remote_port_;
 
         ConnectionDetails(const IPv4Address& local_address, Port local_port, const std::optional<IPv4Address>& remote_address, const std::optional<Port>& remote_port);
+        ConnectionDetails(const IPv4Address& local_address, const Port& local_port, const IPv4Address& remote_address, const Port& remote_port);
         ConnectionDetails(const IPv4Address& local_address, Port local_port);
         auto to_string() const -> std::string;
         friend auto operator==(const ConnectionDetails& left, const ConnectionDetails& right) -> bool;
+
+        static auto reverse_details(const ConnectionDetails& details) -> ConnectionDetails;
 
         class Hash
         {

@@ -22,7 +22,7 @@ TEST(InMemoryNetwork_FullTest)
     IS_EQUAL(bytes, byte_list);
 }
 
-TEST(InMemoryNetwork_FullTest)
+TEST(InMemoryNetwork_FullTest1)
 {
     Networking::IPv4Address address_1{1, 1, 1, 1};
     Networking::IPv4Address address_2{2, 2, 2, 2};

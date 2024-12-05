@@ -14,4 +14,8 @@ add_library(Networking STATIC
     "src/Networking/Sockets.cpp")
 target_include_directories(Networking PUBLIC "include")
 
+add_library(Common INTERFACE)
+target_include_directories(Common INTERFACE "include")
+
 parse_test_file(FILENAME "${CMAKE_SOURCE_DIR}/test/Networking/InMemoryNetworkTest.cpp" INCLUDES "include" LIBRARIES Networking)
+parse_test_file(FILENAME "${CMAKE_SOURCE_DIR}/test/Common/ListUtilsTest.cpp" INCLUDES "include" LIBRARIES Common)
