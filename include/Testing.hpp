@@ -6,6 +6,7 @@
 #include <string>
 #include <format>
 #include <unordered_map>
+#include <stdlib.h>
 
 #define IS_EQUAL(a,b)                                                                                                   \
     if ((a) != (b))                                                                                                     \

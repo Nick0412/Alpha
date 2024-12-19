@@ -3,6 +3,7 @@
 
 #include "Common/Types.hpp"
 #include <cstdint>
+#include <string>
 
 namespace Common
 {
